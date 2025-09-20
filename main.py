@@ -31,12 +31,13 @@ searchbar_w = (185/220) * SCREEN_WIDTH
 searchbar_h = (searchbar_w) * (22/185)
 hamburger_w = (20/220) * SCREEN_WIDTH
 hamburger_h = hamburger_w * (22/20)
-newnote_h = int(prev_next_h * 1.4)  # keep taller newnote
+newnote_w = (210/220) * SCREEN_WIDTH
+newnote_h = newnote_w * (39/210)
 
 # Scale buttons
 prev_button_img = pygame.transform.scale(prev_button_img, (prev_next_w, prev_next_h))
 next_button_img = pygame.transform.scale(next_button_img, (prev_next_w, prev_next_h))
-newnote_button_img = pygame.transform.scale(newnote_button_img, (SCREEN_WIDTH - 12, newnote_h))
+newnote_button_img = pygame.transform.scale(newnote_button_img,(newnote_w, newnote_h))
 hamburger_img = pygame.transform.scale(hamburger_img, (hamburger_w, hamburger_h))
 searchbar_img = pygame.transform.scale(searchbar_img, (searchbar_w, searchbar_h))
 
