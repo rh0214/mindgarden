@@ -285,15 +285,6 @@ def draw_screen():
     screen.blit(next_button_img, next_button_rect)
     screen.blit(newnote_button_img, newnote_button_rect)
     screen.blit(hamburger_img, hamburger_rect)
-    screen.blit(searchbar_blank_img, searchbar_rect)
-    
-    if search_text:
-        search_surface = body_font.render(search_text, True, BLACK)
-    else:
-        search_surface = body_font.render("Search...", True, BLACK)
-    
-    search_rect_draw = search_surface.get_rect(midleft=(searchbar_rect.left + 40, searchbar_rect.centery - 2))
-    screen.blit(search_surface, search_rect_draw)
 
     if screens[current_screen_index] == "home":
         home_plant_rects.clear()
@@ -440,6 +431,15 @@ def draw_screen():
         
             delete_button_rect = pygame.Rect(edit_button_rect.right + 5, text_box_rect.top - int(delete_button_h) - 10, int(delete_button_w), int(delete_button_h))
             screen.blit(delete_button_img, delete_button_rect)
+    screen.blit(searchbar_blank_img, searchbar_rect)
+    
+    if search_text:
+        search_surface = body_font.render(search_text, True, BLACK)
+    else:
+        search_surface = body_font.render("Search...", True, BLACK)
+    
+    search_rect_draw = search_surface.get_rect(midleft=(searchbar_rect.left + 40, searchbar_rect.centery - 2))
+    screen.blit(search_surface, search_rect_draw)
 
 class Plant:
     def __init__(self, x, y, scale=4.0):
@@ -453,10 +453,10 @@ class Plant:
 
         # growth stuff
         self.growth_cap = random.randint(7, 16)
-        self.main_branch_len_min = random.uniform(1, 4)
-        self.main_branch_len_max = random.uniform(1, 8)
-        self.offshoot_len_min = random.uniform(4, 6)
-        self.offshoot_len_max = random.uniform(4, 15)
+        self.main_branch_len_min = random.uniform(3, 4)
+        self.main_branch_len_max = random.uniform(2, 8)
+        self.offshoot_len_min = random.uniform(4, 7)
+        self.offshoot_len_max = random.uniform(6, 16)
 
         self.growth_stage = 0
         self.canvas_width, self.canvas_height = 100, 100
@@ -491,10 +491,10 @@ class Plant:
             self.flower_data.append({
                 'show_mid': random.random() < FLOWER_CHANCE,
                 'color_mid': self._get_flower_color_shade(),
-                'size_mid': random.uniform(2.0, 3.5),
+                'size_mid': random.uniform(1.4, 3.1),
                 'show_end': random.random() < FLOWER_CHANCE,
                 'color_end': self._get_flower_color_shade(),
-                'size_end': random.uniform(2.0, 3.5)
+                'size_end': random.uniform(1.4, 3.1)
             })
        
         self.grow()
@@ -530,7 +530,7 @@ class Plant:
         if target_list is self.branch_shoots_positions:
             length_min = self.offshoot_len_min
             length_max = self.offshoot_len_max
-            angle_min, angle_max = 20, 50
+            angle_min, angle_max = 15, 45
         else:
             length_min = self.main_branch_len_min
             length_max = self.main_branch_len_max
