@@ -42,19 +42,19 @@ hamburger_img = pygame.transform.scale(hamburger_img, (hamburger_w, hamburger_h)
 searchbar_img = pygame.transform.scale(searchbar_img, (searchbar_w, searchbar_h))
 
 # Button rects
-margin = 6
+margin = 11
 newnote_button_rect = newnote_button_img.get_rect(
     midbottom=(SCREEN_WIDTH // 2, SCREEN_HEIGHT - margin)
 )
 prev_button_rect = prev_button_img.get_rect(
-    bottomleft=(margin, newnote_button_rect.top - margin)
+    bottomleft=(margin, newnote_button_rect.top  - (margin - 5))
 )
 next_button_rect = next_button_img.get_rect(
-    bottomright=(SCREEN_WIDTH - margin, newnote_button_rect.top - margin)
+    bottomright=(SCREEN_WIDTH - margin, newnote_button_rect.top - (margin - 5))
 )
 hamburger_rect = hamburger_img.get_rect(topleft=(margin, margin))
 searchbar_rect = searchbar_img.get_rect(
-    midleft=(hamburger_rect.right + margin, hamburger_rect.centery)
+    midleft=(hamburger_rect.right + (margin -2), hamburger_rect.centery)
 )
 
 def draw_screen():
